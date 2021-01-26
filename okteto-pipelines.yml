@@ -1,4 +1,4 @@
 deploy:
-  - okteto build -t okteto.dev/git-installer-test-service:${OKTETO_GIT_COMMIT} git-installer-test-service
+  - okteto build -t okteto.dev/git-installer-test-service:${OKTETO_GIT_COMMIT}
 devs:
-  -okteto.yml
+  - okteto.yml
