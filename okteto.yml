@@ -1,6 +1,7 @@
 name: git-installer-test-service
 command: ["bash"]
+image: okteto/golang:1
+sync:
+  - .:/usr/src/app
 forward:
   - 8080:8080
-persistentVolume:
-  enabled: false

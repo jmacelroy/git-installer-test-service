@@ -1,4 +1,5 @@
 deploy:
   - okteto build -t okteto.dev/git-installer-test-service:${OKTETO_GIT_COMMIT}
+  - kubectl apply -f k8s.yml
 devs:
   - ./okteto.yml

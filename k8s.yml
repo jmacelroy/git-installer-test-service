@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-installer-test-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: git-installer-test-service
+  template:
+    metadata:
+      labels:
+        app: git-installer-test-service
+    spec:
+      containers:
+      - image: okteto.dev/git-installer-test-service:${OKTETO_GIT_COMMIT}
+        name: git-installer-test-service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: git-installer-test-service
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP  
+  ports:
+  - name: "git-installer-test-service"
+    port: 8080
+  selector:
+    app: git-installer-test-service
